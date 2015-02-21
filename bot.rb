@@ -15,4 +15,9 @@ s.puts "JOIN #{channel}"
 until s.eof? do
   msg = s.gets
   puts msg
+
+  if msg.match(/^PING :(.*)$/)
+    s.puts "PONG #{$~[1]}"
+    next
+  end
 end
